@@ -1,13 +1,16 @@
-import { dbConnect } from "@/lib/dbConnect";
+import  dbConnect  from "@/lib/dbConnect";
 import UserModel from "@/model/User";
 
 export async function POST(req){
     await dbConnect();
     try{
         const{username,code}=await req.json();
+        console.log(code);
+        
         
         const decodedUsername=decodeURIComponent(username)
         const user=await UserModel.findOne({username:decodedUsername})
+        console.log("user",user.verifyCode);
         
 
         if(!user){
