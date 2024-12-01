@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button"
 
 import { Loader2 } from "lucide-react"
 
-export default function verify() {
+export default function Verify() {
     const router = useRouter();
     const params = useParams();
     const { toast } = useToast();

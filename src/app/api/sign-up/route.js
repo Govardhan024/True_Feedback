@@ -1,12 +1,14 @@
 import sendVerificationEmail from "@/helpers/sendVerificationEmail";
-import  dbConnect  from "@/lib/dbConnect";
+import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User";
 import bcrypt from "bcryptjs";
 import { Link } from "lucide-react";
+import { redirect } from "next/dist/server/api-utils";
 
 export async function POST(req) {
 
     await dbConnect();
+    
 
     try {
         
@@ -54,13 +56,14 @@ export async function POST(req) {
                 password: hashedPassword,
                 verifyCode,
                 verifyCodeExpiry: expiryDate, 
-                isVerified: false,
+                isVerified: true,
                 isAcceptingMessages: true,
                 messages: []
             })
             console.log(newUser)
             
             await newUser.save();
+            
             
         }
 

@@ -8,7 +8,7 @@ export async function POST(req, res){
     dbConnect();
 
     try {
-        const { email, password } = await req.body; // Assuming you're using req.body instead of req.json()
+        const { email, password } = await req.body; 
         console.log(email, password);
 
         const user = await UserModel.findOne({ email });

@@ -66,13 +66,16 @@ export default function Page() {
     setIsSubmitting(true)
     try {
 
-      const response = await axios.post("/api/sign-up", data)
+      const response = await axios.post("/api/sign-up", data);
+      console.log(response);
+      
       
       toast({
         title: 'success',
         description: response.data.message,
       })
-      router.push(`/verify/${username}`);
+    //  router.push(`/verify/${username}`);
+     router.push(`/dashboard`)
 
       setIsSubmitting(false)
     } catch (error) {
